@@ -1,0 +1,7 @@
+{
+  "name": "WebProgresivas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
