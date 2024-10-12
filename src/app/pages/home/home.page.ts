@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public loaded = false;
   dishes: any[] = [];
+  filteredDishes: any[] = [];
   readonly API: string =
     'https://www.themealdb.com/api/json/v1/1/search.php?f=b';
 
@@ -44,6 +46,11 @@ export class HomePage implements OnInit {
         });
 
         this.dishes = mealData;
+        this.filteredDishes = this.dishes;
+        if (this.dishes) {
+          this.loaded = true;
+          console.log(this.loaded);
+        }
         console.log(this.dishes);
       } else {
         console.error('No se encontró ningun platillo');
@@ -51,6 +58,14 @@ export class HomePage implements OnInit {
     } catch (error) {
       console.error('Error al capturar los datos de la API', error);
     }
+  }
+
+  handleInput(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.filteredDishes = this.dishes.filter(
+      (d) => d.strMeal.toLowerCase().indexOf(query) > -1
+    );
+    console.log(this.filteredDishes);
   }
 
   constructor() {}
