@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <app-header />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loaded" class="container">
+    <ion-card *ngFor="let item of filteredDishes">
+      <ion-card-title>{{item.strMeal}}</ion-card-title>
+        <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
+      <ion-card-header>
+        <ion-card-subtitle>{{item.strCategory}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{item.ingredients}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="!loaded" class="container">
+    <ion-card *ngFor="let _ of placeholders">
+      <ion-thumbnail>
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-card-header>
+        <ion-skeleton-text [animated]="true" style="width: 60%; height: 1.75em"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 80%; height: 1.25em"></ion-skeleton-text>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-skeleton-text [animated]="true" style="width: 30%; height: 1em"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

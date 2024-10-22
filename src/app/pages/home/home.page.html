@@ -1,112 +1,91 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Aplicación
-    </ion-title>
-  </ion-toolbar>
+  <app-header />
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="navBar">
-    <ion-button [routerLink]="['/product-list']">Productos</ion-button>
-    <ion-searchbar (ionInput)="handleInput($event)" class="custom-searchbar" show-clear-button="always"></ion-searchbar>
-  </div>
-    <div class="container">
+  <div><h1>Refrigerados</h1></div>
+  <div class="container">
     <ion-card>
+      <ion-card-title>Tomate</ion-card-title>
+      <img alt="Imagen del platillo" src="https://images.unsplash.com/photo-1710968875694-1883b2d11070?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8" />
+      <ion-card-header>
+        <ion-card-subtitle>Marca</ion-card-subtitle>
+      </ion-card-header>
+    
+      <div class="Contenido">
+        <ion-card-content class="Precio">
+          $200 Mxn
+        </ion-card-content>
+        <ion-card-content>
+          1 pieza
+        </ion-card-content>
+      </div>
+      <!-- <ion-button [routerLink]="['/product-item']">Tomate</ion-button>
+      <ion-button [routerLink]="['/shoping-cart']">Carrito</ion-button> -->
+    </ion-card>
+    <ion-card>
+      <ion-card-title>Leche deslactosa</ion-card-title>
       <img alt="Imagen del platillo" src="https://ionicframework.com/docs/img/demos/card-media.png" />
       <ion-card-header>
-        <ion-card-title>Tomate</ion-card-title>
-        <ion-card-subtitle>1 kg</ion-card-subtitle>
+        <ion-card-subtitle>Marca</ion-card-subtitle>
       </ion-card-header>
     
-      <ion-card-content>
-        $89Mxn
-      </ion-card-content>
-      <ion-button [routerLink]="['/product-item']">Tomate</ion-button>
-      <ion-button [routerLink]="['/shoping-cart']">Carrito</ion-button>
+      <div class="Contenido">
+        <ion-card-content class="Precio">
+          $200 Mxn
+        </ion-card-content>
+        <ion-card-content>
+          6 piezas
+        </ion-card-content>
+      </div>
     </ion-card>
     <ion-card>
+      <ion-card-title>Agua embotellada</ion-card-title>
       <img alt="Imagen del platillo" src="https://ionicframework.com/docs/img/demos/card-media.png" />
       <ion-card-header>
-        <ion-card-title>Leche deslactosa</ion-card-title>
-        <ion-card-subtitle>Lala</ion-card-subtitle>
+        <ion-card-subtitle>Marca</ion-card-subtitle>
       </ion-card-header>
     
-      <ion-card-content>
-        $200 Mxn
-      </ion-card-content>
+      <div class="Contenido">
+        <ion-card-content class="Precio">
+          $200 Mxn
+        </ion-card-content>
+        <ion-card-content>
+          Hola que tal
+        </ion-card-content>
+      </div>
     </ion-card>
     <ion-card>
+      <ion-card-title>Carne de cerdo</ion-card-title>
       <img alt="Imagen del platillo" src="https://ionicframework.com/docs/img/demos/card-media.png" />
       <ion-card-header>
-        <ion-card-title>Agua embotellada</ion-card-title>
-        <ion-card-subtitle>Ciel</ion-card-subtitle>
+        <ion-card-subtitle>Marca</ion-card-subtitle>
       </ion-card-header>
     
-      <ion-card-content>
-        $159 Mxn
-      </ion-card-content>
+      <div class="Contenido">
+        <ion-card-content class="Precio">
+          $200 Mxn
+        </ion-card-content>
+        <ion-card-content>
+          Hola que tal
+        </ion-card-content>
+      </div>
     </ion-card>
     <ion-card>
+      <ion-card-title>Pescado</ion-card-title>
       <img alt="Imagen del platillo" src="https://ionicframework.com/docs/img/demos/card-media.png" />
       <ion-card-header>
-        <ion-card-title>Carne de cerdo</ion-card-title>
-        <ion-card-subtitle>3 piezas</ion-card-subtitle>
+        <ion-card-subtitle>Marca</ion-card-subtitle>
       </ion-card-header>
     
-      <ion-card-content>
-        $500 Mxn
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img alt="Imagen del platillo" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <ion-card-header>
-        <ion-card-title>Pescado</ion-card-title>
-        <ion-card-subtitle>6 piezas</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        $200 Mxn
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img alt="Imagen del platillo" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-      <ion-card-header>
-        <ion-card-title>Mantequilla</ion-card-title>
-        <ion-card-subtitle>600 gramos</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        $199 Mxn
-      </ion-card-content>
-    </ion-card>
-  </div>
-  <div *ngIf="loaded" class="container">
-    <ion-card *ngFor="let item of filteredDishes">
-        <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
-      <ion-card-header>
-        <ion-card-title>{{item.strMeal}}</ion-card-title>
-        <ion-card-subtitle>{{item.strCategory}}</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        {{item.ingredients}}
-      </ion-card-content>
-    </ion-card>
-  </div>
-  <div *ngIf="!loaded" class="container">
-    <ion-card>
-      <ion-thumbnail>
-        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-      </ion-thumbnail>
-      <ion-card-header>
-        <ion-skeleton-text [animated]="true" style="width: 60%; height: 1.75em"></ion-skeleton-text>
-        <ion-skeleton-text [animated]="true" style="width: 80%; height: 1.25em"></ion-skeleton-text>
-      </ion-card-header>
-    
-      <ion-card-content>
-        <ion-skeleton-text [animated]="true" style="width: 30%; height: 1em"></ion-skeleton-text>
-      </ion-card-content>
+      <div class="Contenido">
+        <ion-card-content class="Precio">
+          $200 Mxn
+        </ion-card-content>
+        <ion-card-content>
+          Hola que tal
+        </ion-card-content>
+      </div>
     </ion-card>
   </div>
 </ion-content>
