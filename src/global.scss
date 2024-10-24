@@ -12,7 +12,89 @@
 /* Core CSS required for Ionic components to work properly */
 html, body, ion-app{
   --ion-background-color: #F1F5F9;
+  font-size: 1.125rem;
 }
+
+label{
+  color: #404E68;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+form {
+  display: flex; 
+  flex-direction: column; 
+  width: 30%; 
+  gap: 1rem;
+}
+
+input {
+  background-color: #fff;
+  border: 2px #404E68 solid;
+  color: black;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.centeredForm {
+  display: flex; 
+  flex: 1; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.containerForm {
+  background-color: #FFFFFF;
+  display: flex;
+  gap: 5rem;
+  padding: 3rem;
+}
+
+.Error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+form > button {
+  background-color: #404E68;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 8px;
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem;
+}
+
+.loader {
+  text-align: center;
+  margin-top: 10px;
+  color: #404E68;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+small {
+  color: #a09d9d
+}
+.IMGForm {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+}
+
+.IMGForm > img {
+  height: 500px;
+  object-fit: cover; 
+  position: absolute
+}
+
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
