@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
+import { Products, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,9 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class HomePage implements OnInit {
   public loaded = false;
-  public products: any[] = [];
+  public products: Products[] = [];
+  placeholders: number[] = Array(5).fill(0);
   public errorMessage: string = '';
-  public FrutasVerduras: any[] = [];
 
   constructor(private productsAPI: ProductsService) {}
 
@@ -18,12 +18,8 @@ export class HomePage implements OnInit {
     this.loaded = false; // Inicia el loader
 
     try {
-      const response = await this.productsAPI.getProducts();
+      const response: Products[] = await this.productsAPI.getProducts();
       this.products = response; // Asignar los productos recibidos
-
-      this.FrutasVerduras = response.filter(
-        (product: any) => product.category === 'Frutas y verduras'
-      );
     } catch (error: any) {
       console.error('Error al obtener productos:', error);
       this.errorMessage = error.message || 'Error al obtener los productos'; // Mostrar el mensaje de error si lo hay

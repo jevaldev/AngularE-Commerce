@@ -1,8 +1,9 @@
 ion-title{
   cursor: pointer;
+  color: #f5f7fa;
 }
 ion-toolbar {
-  --background: #F1F5F9;
+  --background: #2d495f;
   --color: black;
   --border-color: #404E68;
   --border-width: 0 0 2px 0;
@@ -17,10 +18,11 @@ ion-button{
   --padding-top: 10px;
   --padding-start: 1.5rem;
   --padding-end: 1.5rem;
+  color: #a3c0d6;
 }
 
 .call-to-action{
-  background-color: #404E68;
+  background-color: #001F3F;
   color: #FFFFFF;
   font-weight: bold;
   border-radius: 8px;
@@ -32,3 +34,8 @@ ion-button{
   --padding-end: 1.5rem;
 }
 
+.active-button {
+  color: #e9eff5;
+  border-bottom: 2px solid #FFFFFF;
+  font-weight: bold;
+}

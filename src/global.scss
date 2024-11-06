@@ -15,6 +15,41 @@ html, body, ion-app{
   font-size: 1.125rem;
 }
 
+ion-card-title {
+  --color: #2A3141;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+ion-card-subtitle {
+  --color: #404E68;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+ion-card-content {
+  color:#7697BB;
+  padding: 0;
+  padding-inline: 1rem;
+}
+
+ion-card {
+  --background: white;
+  width: 300px;
+  padding: 1rem;
+  justify-content: space-around;
+  position: relative;
+}
+
+ion-card img {
+  width: 100%; 
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+
 
 label{
   color: #404E68;

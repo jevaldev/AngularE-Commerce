@@ -16,8 +16,8 @@ export class RecipesPage implements OnInit {
 
   getIngredients = (meal: { [key: string]: any }): string[] => {
     return Object.keys(meal)
-      .filter((key) => key.startsWith('strIngredient') && meal[key]) // Only truthy values
-      .map((key) => meal[key]); // Map to ingredient values
+      .filter((key) => key.startsWith('strIngredient') && meal[key])
+      .map((key) => meal[key]);
   };
 
   async getFoodAPI() {

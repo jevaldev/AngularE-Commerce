@@ -1,23 +1,45 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 
+export interface Products {
+  id: String;
+  product: String;
+  brand: String;
+  quantity: Number;
+  price: Number;
+  category: String;
+  stock: Number;
+  offer: Number;
+  imgName: String;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   private apiURL = 'http://localhost:3000';
 
-  async getProducts(): Promise<any> {
+  async getProducts(): Promise<Products[]> {
     try {
-      // Esperar a que axios resuelva la solicitud
-      const response = await axios.get(`${this.apiURL}/products`);
-      return response.data; // Retornar solo los datos de la respuesta
+      const response = await axios.get(`${this.apiURL}/products/products`);
+      return response.data;
     } catch (error: any) {
-      // Asegúrate de que el error sea del tipo AxiosError
       if (axios.isAxiosError(error)) {
-        throw error.response?.data || 'Error en la solicitud'; // Manejar el error como desees
+        throw error.response?.data || 'Error en la solicitud al servidor';
       } else {
-        throw 'Error inesperado'; // Manejar errores no relacionados con Axios
+        throw 'Error inesperado';
+      }
+    }
+  }
+
+  async getCategories(): Promise<any> {
+    try {
+      const response = await axios.get(`${this.apiURL}/products/categories`);
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
       }
     }
   }
