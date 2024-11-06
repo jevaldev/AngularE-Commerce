@@ -5,15 +5,11 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="loaded" class="container">
     <ion-card *ngFor="let item of filteredDishes">
-      <ion-card-title>{{item.strMeal}}</ion-card-title>
-        <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
+      <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
       <ion-card-header>
-        <ion-card-subtitle>{{item.strCategory}}</ion-card-subtitle>
+        <ion-card-title>{{item.strMeal}}</ion-card-title>
       </ion-card-header>
-    
-      <ion-card-content>
-        {{item.ingredients}}
-      </ion-card-content>
+      <ion-card-subtitle>{{item.strCategory}}</ion-card-subtitle>
     </ion-card>
   </div>
   <div *ngIf="!loaded" class="container">

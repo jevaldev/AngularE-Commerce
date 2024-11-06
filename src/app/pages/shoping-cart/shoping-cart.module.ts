@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ShopingCartPageRoutingModule } from './shoping-cart-routing.module';
 
 import { ShopingCartPage } from './shoping-cart.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShopingCartPageRoutingModule
+    ShopingCartPageRoutingModule,
+    ComponentsModule,
   ],
-  declarations: [ShopingCartPage]
+  declarations: [ShopingCartPage],
 })
 export class ShopingCartPageModule {}

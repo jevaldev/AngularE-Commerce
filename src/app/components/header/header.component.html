@@ -3,10 +3,14 @@
     <ion-title [routerLink]="['/']">
       Aplicación bonita
     </ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons class="nav-bar" slot="end">
       <ion-button [routerLink]="['/product-item']">Productos</ion-button>
       <ion-button [routerLink]="['/recipes']">Recetas</ion-button>
       <ion-button [routerLink]="['/login']">Iniciar Sesión</ion-button>
+      <ion-button class="call-to-action" [routerLink]="['/shoping-cart']">
+        <ion-icon slot="start" name="cart-outline"></ion-icon>
+        0
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

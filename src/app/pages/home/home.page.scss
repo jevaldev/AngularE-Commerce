@@ -74,11 +74,12 @@ ion-card-title {
 }
 
 
-ion-card-subtitle, ion-card-header {
+ion-card-subtitle {
   --color: #404E68;
   font-weight: 600;
   font-size: 1.2rem;
   padding-bottom: 0;
+  height: 2ch;
 }
 
 .container{
@@ -88,4 +89,83 @@ ion-card-subtitle, ion-card-header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   background-color: #B4CBDC;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 50svh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgb(45,73,95);
+background: linear-gradient(180deg, rgba(45,73,95,1) 0%, rgba(114,159,190,1) 35%, rgba(241,245,249,1) 100%);
+  transition: background-color 1s ease;
+}
+
+.slider {
+  width: min(1000px, 100vw);
+  height: 360px;
+  aspect-ratio: 1.39;
+  border-radius: 10px;
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 400%;
+    animation: slide 28s infinite;
+  }
+
+  li {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  img {
+    width: min(500px, 100vw);
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.text-section {
+  width: min(500px, 100vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: end;
+
+  h2 {
+    font-size: 2.25rem;
+    color: #000000;
+    font-weight: bold;
+  }
+
+  span {
+    font-size: 1.25rem;
+    text-decoration: line-through;
+    color: #a09d9d;
+  }
+
+  p {
+    font-size: 1.5rem;
+    color: lawngreen;
+  }
+}
+@keyframes slide {
+  0% { margin-left: 0%; }
+  20% { margin-left: 0%; }
+
+  25% { margin-left: -100%; }
+  45% { margin-left: -100%; }
+
+  50% { margin-left: -200%; }
+  70% { margin-left: -200%; }
+
+  75% { margin-left: -300%; }
+  100% { margin-left: -300%; } /* Reinicia la animación para hacerla continua */
 }

@@ -6,22 +6,29 @@ ion-toolbar {
   --color: black;
   --border-color: #404E68;
   --border-width: 0 0 2px 0;
-
-  --min-height: 80px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
-  --padding-start: 2rem;
-  --padding-end: 2rem;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  --padding-bottom: 10px;  
+  --padding-top: 10px;
 }
 
 ion-button{
+  --padding-bottom: 10px;  
+  --padding-top: 10px;
+  --padding-start: 1.5rem;
+  --padding-end: 1.5rem;
+}
+
+.call-to-action{
   background-color: #404E68;
   color: #FFFFFF;
   font-weight: bold;
   border-radius: 8px;
+  min-height: 50px;
 
   --padding-bottom: 10px;  
   --padding-top: 10px;
   --padding-start: 1.5rem;
   --padding-end: 1.5rem;
 }
+
