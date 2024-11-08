@@ -1,3 +1,12 @@
+
+ion-thumbnail{
+  --size: 250px;
+  --border-radius: 14px;
+}
+ion-skeleton-text {
+  --background-rgb: 0, 0, 0;
+}
+
 h1 {
   color: #404E68;
   padding-left: 4rem;
@@ -11,23 +20,6 @@ h1 {
   --background: #19422d; 
   border-radius: 10px;       
 }
-
-ion-searchbar.custom-searchbar {
-  --background: #19422d; 
-  --color: #fff;         
-  --placeholder-color: #fff;       
-  --icon-color: #fff;              
-  --clear-button-color: #fff;      
-  --border-radius: 10px; 
-}
-ion-thumbnail{
-  --size: 250px;
-  --border-radius: 14px;
-}
-ion-skeleton-text {
-  --background-rgb: 0, 0, 0;
-}
-
 
 ion-card-content {
   padding: 0; 
@@ -58,16 +50,14 @@ ion-card-content {
   align-items: center;
   justify-content: space-around;
   background: rgb(45,73,95);
-background: linear-gradient(180deg, rgba(45,73,95,1) 0%, rgba(114,159,190,1) 35%, rgba(241,245,249,1) 100%);
+  background: linear-gradient(180deg, rgba(45,73,95,1) 0%, rgba(114,159,190,1) 35%, rgba(241,245,249,1) 100%);
   transition: background-color 1s ease;
 }
 
 .slider {
   width: min(1000px, 100vw);
-  height: 360px;
-  aspect-ratio: 1.39;
-  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0px 5px 20px 2px black;
 
   ul {
     display: flex;
@@ -97,23 +87,41 @@ background: linear-gradient(180deg, rgba(45,73,95,1) 0%, rgba(114,159,190,1) 35%
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: end;
+  background-color: #dae5ee;
+
+  padding-inline: 3rem;
 
   h2 {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     color: #000000;
     font-weight: bold;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    color: #000000;
+    font-weight: bold;
+  }
+
+  h5 {
+    color: #7697BB;
   }
 
   span {
     font-size: 1.25rem;
     text-decoration: line-through;
     color: #a09d9d;
+    margin-left: 0.5rem;
   }
 
   p {
-    font-size: 1.5rem;
-    color: lawngreen;
+    font-size: 2rem;
+    color: darkgreen;
+  }
+
+  footer {
+    display: flex;
+    gap: 1rem;
   }
 }
 @keyframes slide {
@@ -127,5 +135,5 @@ background: linear-gradient(180deg, rgba(45,73,95,1) 0%, rgba(114,159,190,1) 35%
   70% { margin-left: -200%; }
 
   75% { margin-left: -300%; }
-  100% { margin-left: -300%; } /* Reinicia la animación para hacerla continua */
+  100% { margin-left: -300%; }
 }

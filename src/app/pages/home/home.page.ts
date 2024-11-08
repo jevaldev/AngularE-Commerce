@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
 
     try {
       const response: Products[] = await this.productsAPI.getProducts();
-      this.products = response; // Asignar los productos recibidos
+      this.products = response.slice(0, 5); // Asignar los productos recibidos
     } catch (error: any) {
       console.error('Error al obtener productos:', error);
       this.errorMessage = error.message || 'Error al obtener los productos'; // Mostrar el mensaje de error si lo hay
