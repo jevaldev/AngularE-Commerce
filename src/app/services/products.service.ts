@@ -16,11 +16,11 @@ export interface Products {
   providedIn: 'root',
 })
 export class ProductsService {
-  private apiURL = 'http://localhost:3000';
+  private apiURL = 'http://localhost:3000/api/products';
 
   async getProducts(): Promise<Products[]> {
     try {
-      const response = await axios.get(`${this.apiURL}/products/products`);
+      const response = await axios.get(`${this.apiURL}/products`);
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
@@ -33,7 +33,20 @@ export class ProductsService {
 
   async getCategories(): Promise<any> {
     try {
-      const response = await axios.get(`${this.apiURL}/products/categories`);
+      const response = await axios.get(`${this.apiURL}/categories`);
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
+  }
+
+  async getProductByID(id: string): Promise<Products[]> {
+    try {
+      const response = await axios.get(`${this.apiURL}/products/${id}`);
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {

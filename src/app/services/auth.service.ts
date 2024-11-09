@@ -1,11 +1,33 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000'; // Cambia esto según tu configuración
+  private apiUrl = 'http://localhost:3000/api/auth';
+  private authenticatedSubject = new BehaviorSubject<boolean>(false);
+
+  constructor() {
+    this.checkoutAuthenticationStatus();
+  }
+
+  private async checkoutAuthenticationStatus(): Promise<void> {
+    try {
+      const response = await axios.get(`${this.apiUrl}/status`, {
+        withCredentials: true,
+        timeout: 5000,
+      });
+      this.authenticatedSubject.next(response.data.authenticated);
+    } catch (error) {
+      this.authenticatedSubject.next(false);
+    }
+  }
+
+  get isAuthenticated$() {
+    return this.authenticatedSubject.asObservable();
+  }
 
   async register(userData: {
     email: string;
@@ -27,7 +49,10 @@ export class AuthService {
 
   async login(userData: { email: string; password: string }): Promise<any> {
     try {
-      const response = await axios.post(`${this.apiUrl}/login`, userData);
+      const response = await axios.post(`${this.apiUrl}/login`, userData, {
+        withCredentials: true,
+      });
+      this.authenticatedSubject.next(true);
       return response.data;
     } catch (error) {
       // Asegúrate de que el error sea del tipo AxiosError

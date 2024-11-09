@@ -1,23 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title [routerLink]="['/']">
-      SaboresBase
-    </ion-title>
+    <ion-title [routerLink]="['/']"> SaboresBase </ion-title>
     <ion-buttons class="nav-bar" slot="end">
-      <ion-button [routerLink]="['/product-list']" 
-                  [ngClass]="{ 'active-button': isActive('/product-list') }">
+      <ion-button
+        [routerLink]="['/product-list']"
+        [ngClass]="{ 'active-button': isActive('/product-list') }"
+      >
         Productos
       </ion-button>
-      <ion-button [routerLink]="['/recipes']" 
-                  [ngClass]="{ 'active-button': isActive('/recipes') }">
+      <ion-button
+        [routerLink]="['/recipes']"
+        [ngClass]="{ 'active-button': isActive('/recipes') }"
+      >
         Recetas
       </ion-button>
-      <ion-button [routerLink]="['/login']" 
-                  [ngClass]="{ 'active-button': isActive('/login') }">
+      <ion-button
+      class="call-to-action"
+        *ngIf="!isAuthenticated"
+        [routerLink]="['/login']"
+      >
         Iniciar Sesión
       </ion-button>
-      <ion-button class="call-to-action" [routerLink]="['/shoping-cart']" 
-                  [ngClass]="{ 'active-button': isActive('/shoping-cart') }">
+      <ion-button
+      *ngIf="isAuthenticated"
+        class="call-to-action"
+        [routerLink]="['/shoping-cart']"
+      >
         <ion-icon slot="start" name="cart-outline"></ion-icon>
         0
       </ion-button>

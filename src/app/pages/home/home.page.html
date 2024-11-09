@@ -66,7 +66,7 @@
     </section>
   </div>
 
-  <div><h1>Destacados</h1></div>
+  <div><h1>Productos más comprados</h1></div>
   <div class="container">
     <ion-card *ngFor="let product of products">
       <ion-card-title>{{product.product}}</ion-card-title>
@@ -74,15 +74,18 @@
         alt="Imagen del platillo"
         [src]="product.imgName"
       />
-      <ion-card-header>
-        <ion-card-subtitle>{{product.brand}}</ion-card-subtitle>
-        <ion-card-content>{{product.quantity}}</ion-card-content>
-      </ion-card-header>
       <div class="Contenido">
         <ion-card-content class="Precio"
           >${{product.price}} Mxn
         </ion-card-content>
       </div>
+      <ion-card-header>
+        <ion-card-subtitle>{{product.brand}}</ion-card-subtitle>
+        <ion-card-content>{{product.quantity}}</ion-card-content>
+      </ion-card-header>
+      <ion-button [routerLink]="['/product-item', product.id]">
+        Ver producto
+      </ion-button>
     </ion-card>
   </div>
   <div *ngIf="!loaded" class="container">
