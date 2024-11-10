@@ -1,0 +1,40 @@
+ion-button {
+  --background: white;
+  --border-color: #2d495f;
+  --border-width: 1px;
+  --border-style: solid;
+  --background-hover: #7397be;
+  align-self: center;
+}
+
+ion-card {
+  display: flex;
+  flex-direction: column;
+}
+ion-card-content {
+  padding: 0; 
+}
+
+ion-card-header {
+  padding-inline: 16px;
+  padding-top: 0px;
+  padding-bottom: 16px;
+}
+
+.Contenido {
+  text-align: end;
+}
+
+.Precio {
+  font-size: 1.5rem;
+  color: #202531;
+  font-weight: bold;
+}
+
+.container{
+  margin-inline: 3rem;
+  padding: 1rem;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}

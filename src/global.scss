@@ -49,6 +49,11 @@ ion-card img {
   object-fit: cover;
 }
 
+h1 {
+  color: #404E68;
+  padding-left: 4rem;
+  font-weight: bold;
+}
 
 
 label{
@@ -129,6 +134,19 @@ small {
   height: 500px;
   object-fit: cover; 
   position: absolute
+}
+
+.call-to-action{
+  background-color: #001F3F;
+  color: #FFFFFF;
+  font-weight: bold;
+  border-radius: 8px;
+  min-height: 50px;
+
+  --padding-bottom: 10px;  
+  --padding-top: 10px;
+  --padding-start: 1.5rem;
+  --padding-end: 1.5rem;
 }
 
 @import "@ionic/angular/css/core.css";

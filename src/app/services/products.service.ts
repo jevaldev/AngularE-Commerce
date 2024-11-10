@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 
 export interface Products {
-  id: String;
-  product: String;
-  brand: String;
+  id: string;
+  product: string;
+  brand: string;
   quantity: Number;
   price: Number;
-  category: String;
+  category: string;
   stock: Number;
   offer: Number;
-  imgName: String;
+  imgName: string;
 }
 @Injectable({
   providedIn: 'root',
@@ -44,7 +44,7 @@ export class ProductsService {
     }
   }
 
-  async getProductByID(id: string): Promise<Products[]> {
+  async getProductByID(id: string): Promise<Products> {
     try {
       const response = await axios.get(`${this.apiURL}/products/${id}`);
       return response.data;

@@ -67,27 +67,9 @@
   </div>
 
   <div><h1>Productos más comprados</h1></div>
-  <div class="container">
-    <ion-card *ngFor="let product of products">
-      <ion-card-title>{{product.product}}</ion-card-title>
-      <img
-        alt="Imagen del platillo"
-        [src]="product.imgName"
-      />
-      <div class="Contenido">
-        <ion-card-content class="Precio"
-          >${{product.price}} Mxn
-        </ion-card-content>
-      </div>
-      <ion-card-header>
-        <ion-card-subtitle>{{product.brand}}</ion-card-subtitle>
-        <ion-card-content>{{product.quantity}}</ion-card-content>
-      </ion-card-header>
-      <ion-button [routerLink]="['/product-item', product.id]">
-        Ver producto
-      </ion-button>
-    </ion-card>
-  </div>
+
+  <app-product-list-card [products]="products"></app-product-list-card>
+
   <div *ngIf="!loaded" class="container">
     <ion-card *ngFor="let _ of placeholders">
       <ion-thumbnail>
