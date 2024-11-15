@@ -16,5 +16,13 @@
         </div>
       </section>
     </div>
+
+    <h1>Recetas recomendadas con {{product.product}}</h1>
+    <div class="container-grid">
+      <article *ngFor="let meal of meals">
+        <img [src]="meal.strMealThumb" alt="" />
+        <h3>{{meal.strMeal}}</h3>
+      </article>
+    </div>
   </main>
 </ion-content>

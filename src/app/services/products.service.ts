@@ -10,6 +10,7 @@ export interface Products {
   category: string;
   stock: Number;
   offer: Number;
+  fetchName: string;
   imgName: string;
 }
 @Injectable({
@@ -47,6 +48,21 @@ export class ProductsService {
   async getProductByID(id: string): Promise<Products> {
     try {
       const response = await axios.get(`${this.apiURL}/products/${id}`);
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
+  }
+
+  async searchProducts(searchCharacters: string): Promise<any> {
+    try {
+      const response = await axios.get(
+        `${this.apiURL}/products/search/${searchCharacters}`
+      );
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {

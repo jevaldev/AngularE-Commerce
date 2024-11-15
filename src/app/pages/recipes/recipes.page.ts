@@ -9,7 +9,6 @@ export class RecipesPage implements OnInit {
   public loaded = false;
   placeholders: number[] = Array(5).fill(0);
   dishes: any[] = [];
-  filteredDishes: any[] = [];
 
   readonly API: string =
     'https://www.themealdb.com/api/json/v1/1/search.php?f=b';
@@ -28,6 +27,7 @@ export class RecipesPage implements OnInit {
       if (data.meals) {
         const mealData = data.meals.map((meal: { [key: string]: any }) => {
           const {
+            idMeal = null,
             strMeal = null,
             strCategory = null,
             strArea = null,
@@ -37,6 +37,7 @@ export class RecipesPage implements OnInit {
           } = meal;
 
           return {
+            idMeal,
             strMeal,
             strCategory,
             strArea,
@@ -48,10 +49,9 @@ export class RecipesPage implements OnInit {
         });
 
         this.dishes = mealData;
-        this.filteredDishes = this.dishes;
+
         if (this.dishes) {
           this.loaded = true;
-          console.log(this.loaded);
         }
         console.log(this.dishes);
       } else {
@@ -60,14 +60,6 @@ export class RecipesPage implements OnInit {
     } catch (error) {
       console.error('Error al capturar los datos de la API', error);
     }
-  }
-
-  handleInput(event: any) {
-    const query = event.target.value.toLowerCase();
-    this.filteredDishes = this.dishes.filter(
-      (d) => d.strMeal.toLowerCase().indexOf(query) > -1
-    );
-    console.log(this.filteredDishes);
   }
 
   constructor() {}

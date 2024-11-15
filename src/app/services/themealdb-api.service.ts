@@ -39,13 +39,32 @@ export class ThemealdbAPIService {
   //   }
   // }
 
+  async getMeal(id: string) {
+    try {
+      const response = await axios.get(`${this.APIUrl}lookup.php?i=/${id}`);
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
+  }
+
   async getMealByIngredient(ingredient: string) {
     try {
       const response = await axios.get(
         `${this.APIUrl}filter.php?i=${ingredient}`
       );
-      return response.data;
-    } catch {}
+      return response.data.meals.slice(0, 10);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
   }
 
   constructor() {}

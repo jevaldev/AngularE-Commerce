@@ -1,7 +1,15 @@
-ion-title{
+ion-title {
+  width: min-content;
   cursor: pointer;
   color: #f5f7fa;
 }
+
+.containertitulo{
+  display: flex;
+  align-content: center;
+  width: min-content;
+}
+
 ion-toolbar {
   --background: #2d495f;
   --color: black;
@@ -24,4 +32,39 @@ ion-button{
 .active-button {
   color: #e9eff5;
   font-weight: bold;
+}
+
+
+header {
+  display: flex;
+
+  input {
+    flex: 1;
+    width: max-content;
+    flex-grow: 1;
+    width: 100%;
+  }
+  .nav-bar {
+    flex-grow: 0;
+  
+  }
+  .search-container {
+    flex: 1;
+    position: relative;
+    display: inline;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    top: 50%;
+    transform:translateY(-50%);
+    font-size: 1.5rem;
+  }
 }

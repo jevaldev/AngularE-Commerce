@@ -1,6 +1,6 @@
 .container{
-  margin-inline: 3rem;
-  padding: 1rem;
+  padding: 0;
+  margin: 0;
   gap: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

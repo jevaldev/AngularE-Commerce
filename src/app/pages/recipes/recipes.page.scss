@@ -28,15 +28,23 @@ ion-card-subtitle{
 }
 
 .container{
-  margin-inline: 3rem;
   margin-block: 2rem;
-  padding: 1rem;
   gap: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  background-color: #B4CBDC;
+  place-items: center;
 }
 
 ion-skeleton-text {
   --background-rgb: 0, 0, 0;
+}
+
+ion-content {
+  --padding-end: 1rem;
+  --padding-start: 1rem;
+}
+
+ion-card {
+  --background: #e6edf3; 
+  background-color: #e6edf3;
 }

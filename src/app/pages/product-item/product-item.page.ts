@@ -13,6 +13,7 @@ export class ProductItemPage implements OnInit {
   public product: Products = {} as Products;
   public loaded = false;
   public errorMessage: string = '';
+  public meals: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +27,10 @@ export class ProductItemPage implements OnInit {
     try {
       const response: Products = await this.productsAPI.getProductByID(id);
       this.product = response;
-      const meals = await this.mealdbAPI.getMealByIngredient(
-        this.product.product
+      this.meals = await this.mealdbAPI.getMealByIngredient(
+        this.product.fetchName
       );
-      console.log(meals);
+      console.log(this.meals);
       console.log(this.product);
     } catch (error: any) {
       console.error('Error al obtener productos:', error);

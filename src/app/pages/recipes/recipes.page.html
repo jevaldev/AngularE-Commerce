@@ -4,7 +4,7 @@
 
 <ion-content [fullscreen]="true">
   <div *ngIf="loaded" class="container">
-    <ion-card *ngFor="let item of filteredDishes">
+    <ion-card *ngFor="let item of dishes">
       <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
       <ion-card-header>
         <ion-card-title>{{item.strMeal}}</ion-card-title>

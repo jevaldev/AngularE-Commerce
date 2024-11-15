@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductListCardComponent } from './product-list-card/product-list-card.component';
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,21 @@ import { ProductListCardComponent } from './product-list-card/product-list-card.
     LoginComponent,
     RegisterComponent,
     ProductListCardComponent,
+    StatusComponent,
   ],
   exports: [
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
     ProductListCardComponent,
+    StatusComponent,
   ],
-  imports: [CommonModule, IonicModule, RouterModule, ReactiveFormsModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    IonicModule,
+    RouterModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ComponentsModule {}

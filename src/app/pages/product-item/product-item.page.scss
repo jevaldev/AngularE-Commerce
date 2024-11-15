@@ -3,10 +3,17 @@ main {
   display: grid;
   place-content: center;
   padding: 5rem;
+  gap: 2rem;
 
   img {
     aspect-ratio: 1/1;
     max-height: 650px;
+  }
+
+  h1{
+    padding: 0;
+    margin: 0;
+    margin-top: 5rem;
   }
 }
 
@@ -82,4 +89,34 @@ ion-button {
   display: flex;
   gap: 1rem;
   padding-inline: 1rem;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  gap: 2rem;
+
+  article {
+    background-color: white;
+    border: 2px solid #2d495f;
+    display: grid;
+    grid-template-columns: auto 70%;
+  }
+
+  img {
+    aspect-ratio: 1/1;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 1rem;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: #313949;
+    font-weight: bold;
+  }
 }
