@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
-import { ProductsService } from 'src/app/services/products.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { ProductsService } from 'src/app/shared/services/products.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

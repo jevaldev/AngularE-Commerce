@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Products, ProductsService } from 'src/app/services/products.service';
-import { ThemealdbAPIService } from 'src/app/services/themealdb-api.service';
+import {
+  Products,
+  ProductsService,
+} from 'src/app/shared/services/products.service';
+import { ThemealdbAPIService } from 'src/app/shared/services/themealdb-api.service';
 
 @Component({
   selector: 'app-product-item',

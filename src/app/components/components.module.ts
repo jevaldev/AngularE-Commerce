@@ -1,4 +1,3 @@
-import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -6,30 +5,21 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ProductListCardComponent } from './product-list-card/product-list-card.component';
 import { StatusComponent } from './status/status.component';
+import { ModalComponent } from './modal/modal.component';
+import { SharedComponentsModule } from '../shared/components/components.module';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProductListCardComponent,
-    StatusComponent,
-  ],
-  exports: [
-    HeaderComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProductListCardComponent,
-    StatusComponent,
-  ],
+  declarations: [LoginComponent, RegisterComponent, StatusComponent],
+  exports: [LoginComponent, RegisterComponent, StatusComponent, ModalComponent],
   imports: [
     FormsModule,
     CommonModule,
     IonicModule,
     RouterModule,
     ReactiveFormsModule,
+    ModalComponent,
+    SharedComponentsModule,
   ],
 })
 export class ComponentsModule {}

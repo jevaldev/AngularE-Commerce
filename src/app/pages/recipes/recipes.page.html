@@ -1,30 +1,68 @@
-<ion-header [translucent]="true">
-  <app-header />
-</ion-header>
+  <ion-header [translucent]="true">
+    <app-header />
+  </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div *ngIf="loaded" class="container">
-    <ion-card *ngFor="let item of dishes">
-      <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
-      <ion-card-header>
-        <ion-card-title>{{item.strMeal}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-subtitle>{{item.strCategory}}</ion-card-subtitle>
-    </ion-card>
-  </div>
-  <div *ngIf="!loaded" class="container">
-    <ion-card *ngFor="let _ of placeholders">
-      <ion-thumbnail>
-        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-      </ion-thumbnail>
-      <ion-card-header>
-        <ion-skeleton-text [animated]="true" style="width: 60%; height: 1.75em"></ion-skeleton-text>
-        <ion-skeleton-text [animated]="true" style="width: 80%; height: 1.25em"></ion-skeleton-text>
-      </ion-card-header>
-  
-      <ion-card-content>
-        <ion-skeleton-text [animated]="true" style="width: 30%; height: 1em"></ion-skeleton-text>
-      </ion-card-content>
-    </ion-card>
-  </div>
-</ion-content>
+  <ion-content>
+    <main>
+      <div class="main-grid">
+        <header class="search-title">
+          <h3>Filtrar por</h3>
+        </header>
+        <header class="recipe-title">
+          <h2 class="recipe-title">{{titleCategory}}</h2>
+        </header>
+        <!-- <a [routerLink]="'filtered/'+category.strCategory"></a> -->
+        <nav class="search-filter">
+          <details>
+            <summary>Categorias</summary>
+            <ul *ngFor="let category of categories">
+              <!-- <img src="{{category.strCategoryThumb}}" alt=""> -->
+              <li (click)="getFilteredRecipes(category.strCategory)">{{category.strCategory}}</li>
+            </ul>
+          </details>
+        </nav>
+        <article class="recipes-list" *ngIf="loaded">
+          <div class="recipe-card" *ngFor="let item of recipes"> 
+            <picture> 
+              <img alt="Imagen del platillo" src="{{item.strMealThumb}}" />
+            </picture>
+            <header>
+              <h4>{{item.strMeal}}</h4>
+              <ion-button [routerLink]="'recipe/'+item.idMeal"><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+            </header>
+            <footer>
+              <small>{{item.strCategory}}</small>
+              <small>{{item.strTags}}</small>
+            </footer>
+          </div>
+        </article>
+        <footer class="footer-page">
+          <h4>Hola</h4>
+        </footer>
+      </div>
+    </main>
+    
+    
+    <div *ngIf="!loaded" class="recipes-list">
+      <ion-card class="recipes-list" *ngFor="let _ of placeholders">
+        <ion-thumbnail>
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-card-header>
+          <ion-skeleton-text [animated]="true" style="width: 60%; height: 1.75em"></ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 80%; height: 1.25em"></ion-skeleton-text>
+        </ion-card-header>
+    
+        <ion-card-content>
+          <ion-skeleton-text [animated]="true" style="width: 30%; height: 1em"></ion-skeleton-text>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+
+
+    <!-- <button (click)="openModal()">Abrir modal</button>
+    <app-modal>
+      <ng-container modal-header>Modal bonito</ng-container>
+      <ng-container>Contenido del modal</ng-container>
+    </app-modal> -->

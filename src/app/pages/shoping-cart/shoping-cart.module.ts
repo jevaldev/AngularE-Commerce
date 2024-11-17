@@ -8,6 +8,7 @@ import { ShopingCartPageRoutingModule } from './shoping-cart-routing.module';
 
 import { ShopingCartPage } from './shoping-cart.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { SharedComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicModule,
     ShopingCartPageRoutingModule,
     ComponentsModule,
+    SharedComponentsModule,
   ],
   declarations: [ShopingCartPage],
 })

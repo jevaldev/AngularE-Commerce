@@ -1,0 +1,11 @@
+<ng-template cdkPortal>
+  <article class="modal">
+    <header class="modal-header">
+      <ng-content select="[modalHeader]"></ng-content>
+      <button (click)="closeModal.emit()">Close</button>
+    </header>
+    <div class="modal-body">
+      <ng-content select="[modalBody]"></ng-content>
+    </div>
+  </article>
+</ng-template>

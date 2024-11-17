@@ -22,6 +22,9 @@
       <article *ngFor="let meal of meals">
         <img [src]="meal.strMealThumb" alt="" />
         <h3>{{meal.strMeal}}</h3>
+        <ion-button [routerLink]="['/recipes/recipe', meal.idMeal]">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
       </article>
     </div>
   </main>

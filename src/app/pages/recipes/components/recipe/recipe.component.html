@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<ion-content>
+  <main *ngIf="recipe; else loading">
+    <div>
+      <header>
+        <h2>
+          {{recipe.strMeal}}
+        </h2>
+      </header>
+      <section>
+        <article>
+          <picture>
+            <img src="{{recipe.strMealThumb}}" alt="">
+          </picture>
+          <div>
+            <p>{{recipe.strArea}}</p>
+            <p>{{recipe.strTags}}</p>
+            <p>{{recipe.strCategory}}</p>
+          </div>
+        </article>
+        <div>
+          <h3>Procedimiento</h3>
+          <p>{{recipe.strInstructions}}</p>
+        </div>
+        <div>
+          <h3>Ingredientes</h3>
+          <ul *ngFor="let ingredient of recipe.ingredients">
+            <li>{{ingredient}}</li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <h5>Fuentes: </h5>
+        <ul>
+          <li *ngIf="recipe.strYoutube">
+            <a [href]="recipe.strYoutube" target="_blank" rel="noopener noreferrer">
+              Ver en YouTube
+            </a>
+          </li>
+          <li *ngIf="recipe.strSource">
+            <a [href]="recipe.strSource" target="_blank" rel="noopener noreferrer">
+              Página web
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </main>
+  
+  <ng-template #loading>
+    <p>Cargando receta...</p>
+  </ng-template>
+</ion-content>

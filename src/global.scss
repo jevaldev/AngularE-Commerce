@@ -13,6 +13,7 @@
 html, body, ion-app{
   --ion-background-color: #F1F5F9;
   font-size: 1.125rem;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 ion-card-title {
@@ -53,6 +54,15 @@ h1 {
   color: #404E68;
   padding-inline: 2rem;
   font-weight: bold;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+h3 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #2a2a2a;
 }
 
 

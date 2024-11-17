@@ -1,0 +1,55 @@
+ion-content {
+  --color: black;
+}
+
+
+main {
+  display: grid;
+  place-items: center;
+
+  > div {
+    display: grid;
+    width: min(1200px, 100% - 2rem);
+  }
+  h3 {
+    color: #364256
+  }
+  article {
+    display: flex;
+    gap: 1rem;
+  }
+  picture {
+    place-self: center;
+    aspect-ratio: 1/1;
+  }
+}
+ 
+main ul {
+  font-size: 0.9rem;
+  color: #8c8c8c;
+  font-weight: bold;
+}
+main p {
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #4d4d4d;
+}
+
+article p {
+  background-color: #8093b0;
+  border-radius: 16px;
+  color: #ebeef3;
+  font-weight: 700;
+  border: 2px solid #202531;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+}
+
+footer small {
+  display: block;
+}
+
+
+h2 {
+  color: black;
+}

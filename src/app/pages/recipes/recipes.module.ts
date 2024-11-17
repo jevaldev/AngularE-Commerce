@@ -8,7 +8,8 @@ import { RecipesPageRoutingModule } from './recipes-routing.module';
 
 import { RecipesPage } from './recipes.page';
 import { ComponentsModule } from 'src/app/components/components.module';
-
+import { SharedComponentsModule } from 'src/app/shared/components/components.module';
+import { RecipeComponent } from './components/recipe/recipe.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicModule,
     RecipesPageRoutingModule,
     ComponentsModule,
+    SharedComponentsModule,
   ],
-  declarations: [RecipesPage],
+  declarations: [RecipesPage, RecipeComponent],
 })
 export class RecipesPageModule {}

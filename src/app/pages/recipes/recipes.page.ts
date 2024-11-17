@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { mealCategory } from 'src/app/shared/interfaces/mealInterfaces';
+import { ThemealdbAPIService } from 'src/app/shared/services/themealdb-api.service';
 
 @Component({
   selector: 'app-recipes',
@@ -7,64 +9,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesPage implements OnInit {
   public loaded = false;
-  placeholders: number[] = Array(5).fill(0);
-  dishes: any[] = [];
+  public placeholders: number[] = Array(5).fill(0);
+  public recipes: any[] = [];
+  public categories: mealCategory[] = [];
+  public titleCategory: string = '';
 
-  readonly API: string =
-    'https://www.themealdb.com/api/json/v1/1/search.php?f=b';
+  constructor(private mealApiService: ThemealdbAPIService) {}
 
-  getIngredients = (meal: { [key: string]: any }): string[] => {
-    return Object.keys(meal)
-      .filter((key) => key.startsWith('strIngredient') && meal[key])
-      .map((key) => meal[key]);
-  };
+  async getFilteredRecipes(category: string) {
+    this.loaded = false;
+    this.titleCategory = category;
 
-  async getFoodAPI() {
     try {
-      const res = await fetch(this.API);
-      const data = await res.json();
-
-      if (data.meals) {
-        const mealData = data.meals.map((meal: { [key: string]: any }) => {
-          const {
-            idMeal = null,
-            strMeal = null,
-            strCategory = null,
-            strArea = null,
-            strMealThumb = null,
-            strYoutube = null,
-            strSource = null,
-          } = meal;
-
-          return {
-            idMeal,
-            strMeal,
-            strCategory,
-            strArea,
-            strMealThumb,
-            strYoutube,
-            strSource,
-            ingredients: this.getIngredients(meal),
-          };
-        });
-
-        this.dishes = mealData;
-
-        if (this.dishes) {
-          this.loaded = true;
-        }
-        console.log(this.dishes);
-      } else {
-        console.error('No se encontró ningun platillo');
-      }
-    } catch (error) {
-      console.error('Error al capturar los datos de la API', error);
+      this.recipes = await this.mealApiService.getMealsByCategories(category);
+      console.log('receta conseguidas', this.recipes);
+    } catch {
+    } finally {
+      this.loaded = true;
     }
   }
 
-  constructor() {}
+  async getRecipesAPI() {
+    try {
+      const response = await this.mealApiService.getFoodAPI();
+      this.recipes = response;
+      console.log(this.recipes);
+      this.loaded = true;
+    } catch {}
+  }
+
+  async getMealsCategories() {
+    try {
+      const response = await this.mealApiService.getMealCategories();
+      this.categories = response;
+      console.log(this.categories);
+    } catch (error: any) {
+      throw 'Error inesperado';
+    }
+  }
 
   ngOnInit() {
-    this.getFoodAPI();
+    this.getRecipesAPI();
+    this.getMealsCategories();
   }
 }
+
+// isOpenModal = false;
+
+// openModal(): void {
+//   this.isOpenModal = true;
+// }
+
+// closeModal(): void {
+//   this.isOpenModal = false;
+// }

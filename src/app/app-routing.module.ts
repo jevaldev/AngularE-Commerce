@@ -9,7 +9,9 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomePageModule),
+      import('./pages/products/products.module').then(
+        (m) => m.ProductsPageModule
+      ),
   },
   {
     path: '',
@@ -25,23 +27,16 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'product-item/:id',
-    loadChildren: () =>
-      import('./pages/product-item/product-item.module').then(
-        (m) => m.ProductItemPageModule
-      ),
-  },
-  {
-    path: 'product-list',
-    loadChildren: () =>
-      import('./pages/product-list/product-list.module').then(
-        (m) => m.ProductListPageModule
-      ),
-  },
-  {
     path: 'recipes',
     loadChildren: () =>
       import('./pages/recipes/recipes.module').then((m) => m.RecipesPageModule),
+  },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./pages/products/products.module').then(
+        (m) => m.ProductsPageModule
+      ),
   },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

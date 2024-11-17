@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Products, ProductsService } from 'src/app/services/products.service';
+import {
+  Products,
+  ProductsService,
+} from 'src/app/shared/services/products.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-products',
+  templateUrl: './products.page.html',
+  styleUrls: ['./products.page.scss'],
 })
-export class HomePage implements OnInit {
+export class ProductsPage implements OnInit {
   public loaded = false;
   public products: Products[] = [];
   placeholders: number[] = Array(5).fill(0);
