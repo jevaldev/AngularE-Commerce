@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProductsService } from 'src/app/shared/services/products.service';
@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -26,18 +27,23 @@ export class HeaderComponent implements OnInit {
         this.isAuthenticated = authenticated;
       }
     );
+
+    this.route.queryParams.subscribe((params) => {
+      if (params['search']) {
+        this.searchQuery = params['search'];
+      }
+    });
   }
 
   onSearch() {
     if (this.searchQuery.trim()) {
-      try {
-        console.log(this.productsService.searchProducts(this.searchQuery));
-      } catch {}
-      console.log('Busqueda: ', this.searchQuery);
+      this.router.navigate(['/products/product-list'], {
+        queryParams: { search: this.searchQuery.trim() },
+      });
     }
   }
 
-  isActive(route: string): boolean {
-    return this.router.url === route;
+  isActive(url: string): boolean {
+    return this.router.url.includes(url);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   Products,
@@ -17,12 +17,22 @@ export class ProductItemPage implements OnInit {
   public loaded = false;
   public errorMessage: string = '';
   public meals: any = [];
+  numberInput: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private productsAPI: ProductsService,
     private mealdbAPI: ThemealdbAPIService
   ) {}
+
+  @HostListener('input', ['$event'])
+  onInputChange(event: any) {
+    const initialValue = event.target.value;
+    event.target.value = initialValue.replace(/[^0-9]*/g, ''); // Eliminar todo lo que no sea número
+    if (initialValue !== event.target.value) {
+      event.stopPropagation();
+    }
+  }
 
   async getProduct(id: string) {
     this.loaded = false;
@@ -33,8 +43,6 @@ export class ProductItemPage implements OnInit {
       this.meals = await this.mealdbAPI.getMealByIngredient(
         this.product.fetchName
       );
-      console.log(this.meals);
-      console.log(this.product);
     } catch (error: any) {
       console.error('Error al obtener productos:', error);
       this.errorMessage = error.message || 'Error al obtener los productos';
@@ -43,6 +51,9 @@ export class ProductItemPage implements OnInit {
     }
   }
 
+  filterNumbers() {
+    this.numberInput = this.numberInput.replace(/[^0-9]/g, '');
+  }
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.productId = params.get('id') || '';

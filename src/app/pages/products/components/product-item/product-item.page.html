@@ -4,24 +4,29 @@
 
 <ion-content [fullscreen]="true">
   <main>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <div class="wrapper">
       <img [src]="product.imgName" alt="" />
       <section>
-        <h1>{{product.product}} <span>{{product.brand}}</span></h1>
-        <h3 class="Precio">${{product.price}} mxn</h3>
+        <h2>{{product.product}} <span>{{product.brand}}</span></h2>
+        <h4 class="Precio">${{product.price}} mxn</h4>
         <small>Contenido: {{product.quantity}}</small>
         <div class="buttons">
+          <label for="">Cantidad</label>
+          <input type="text" placeholder="1" pattern="^[0-9]*$" [(ngModel)]="numberInput" (keyup)="filterNumbers()">
           <ion-button class="call-to-action"> Añadir al carrito </ion-button>
           <ion-button> Comprar </ion-button>
         </div>
       </section>
     </div>
 
-    <h1>Recetas recomendadas con {{product.product}}</h1>
+    <h3>Recetas recomendadas con {{product.product}}</h3>
     <div class="container-grid">
       <article *ngFor="let meal of meals">
         <img [src]="meal.strMealThumb" alt="" />
-        <h3>{{meal.strMeal}}</h3>
+        <h4>{{meal.strMeal}}</h4>
         <ion-button [routerLink]="['/recipes/recipe', meal.idMeal]">
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </ion-button>

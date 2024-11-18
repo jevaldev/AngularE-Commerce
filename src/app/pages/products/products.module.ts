@@ -11,6 +11,7 @@ import { ProductListCardComponent } from './components/product-list-card/product
 import { SharedComponentsModule } from 'src/app/shared/components/components.module';
 import { ProductListPage } from './components/product-list/product-list.page';
 import { ProductItemPage } from './components/product-item/product-item.page';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,13 @@ import { ProductItemPage } from './components/product-item/product-item.page';
     ProductListCardComponent,
     ProductListPage,
     ProductItemPage,
+    ProductCardComponent,
   ],
-  exports: [ProductListCardComponent, ProductListPage, ProductItemPage],
+  exports: [
+    ProductListCardComponent,
+    ProductListPage,
+    ProductItemPage,
+    ProductCardComponent,
+  ],
 })
 export class ProductsPageModule {}

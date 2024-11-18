@@ -1,0 +1,13 @@
+<div class="product-card" *ngFor="let product of products"> 
+  <picture> 
+    <img alt="Imagen del platillo" src="{{product?.imgName}}" />
+  </picture>
+  <header>
+    <h4>{{product?.product}}</h4>
+    <ion-button [routerLink]="'recipe/'+product?.id"><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+  </header>
+  <footer>
+    <small>{{product?.price}}</small>
+    <small>{{product?.category}}</small>
+  </footer>
+</div>

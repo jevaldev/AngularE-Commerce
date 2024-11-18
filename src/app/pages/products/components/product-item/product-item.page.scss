@@ -2,13 +2,17 @@ main {
   width: 100%;
   display: grid;
   place-content: center;
-  padding: 5rem;
+  padding-block: 3rem;
   gap: 2rem;
+
 
   img {
     aspect-ratio: 1/1;
-    max-height: 650px;
+    object-fit: cover;
+    max-height: 250px;
+    max-width: 250px;
   }
+
 
   h1{
     padding: 0;
@@ -19,8 +23,15 @@ main {
 
 .wrapper {
   display: flex;
-  width: min(1200px, 100% - 2rem);
   gap: 32px;
+  place-content: center;
+
+  > img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    max-height: 600px;
+    max-width: 600px;
+  }
 }
 
 .wrapper > section {
@@ -28,14 +39,12 @@ main {
   flex-direction: column;
   place-content: start;
   padding: 2rem;
-  width: 100%;
   background-color: white;
   border: 2px solid #404E68;
-  min-width: 600px;
-  max-height: 300px;
+  height: fit-content;
   border-radius: 8px;
 
-  h1 {
+  h2{
     margin: 0;
     padding: 0;
     font-size: 1.25rem;
@@ -53,10 +62,6 @@ main {
     color: #202531;
     font-weight: bold;
   }
-
-  small {
-    flex: 1
-  }
 }
 
 ion-button.call-to-action{
@@ -73,7 +78,10 @@ ion-button.call-to-action{
   flex: 1;
 }
 
-ion-button {
+ion-back-button {
+  color: #2d495f;
+}
+ion-button{
   --background: white;
   --border-color: #2d495f;
   --border-width: 1px;
@@ -87,35 +95,44 @@ ion-button {
 
 .buttons {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   padding-inline: 1rem;
+  margin-top: 2rem;
 }
 
 .container-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  grid-template-columns: repeat(auto-fit, 250px);
   gap: 2rem;
+  max-width: 900px;
+  place-content: center;
+
+  ion-button {
+    width: 100%;
+    padding-inline: 2rem;
+  }
 
   article {
     background-color: white;
     border: 2px solid #2d495f;
     display: grid;
-    grid-template-columns: auto 70%;
+    padding-bottom: 1rem;
+    grid-template-rows: auto auto 3rem;
   }
 
   img {
     aspect-ratio: 1/1;
   }
 
-  h1 {
-    margin: 0;
-    padding: 1rem;
-  }
-
   h3 {
     margin: 0;
+    padding: 1.25rem;
+  }
+
+  h4 {
+    margin: 0;
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.175rem;
     color: #313949;
     font-weight: bold;
   }

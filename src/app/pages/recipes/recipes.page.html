@@ -39,25 +39,26 @@
         <footer class="footer-page">
           <h4>Hola</h4>
         </footer>
+        <article *ngIf="!loaded" class="recipes-list">
+          <ion-card *ngFor="let _ of placeholders">
+            <ion-thumbnail>
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-card-header>
+              <ion-skeleton-text [animated]="true" style="width: 60%; height: 1.75em"></ion-skeleton-text>
+              <ion-skeleton-text [animated]="true" style="width: 80%; height: 1.25em"></ion-skeleton-text>
+            </ion-card-header>
+        
+            <ion-card-content>
+              <ion-skeleton-text [animated]="true" style="width: 30%; height: 1em"></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </article>
       </div>
     </main>
     
     
-    <div *ngIf="!loaded" class="recipes-list">
-      <ion-card class="recipes-list" *ngFor="let _ of placeholders">
-        <ion-thumbnail>
-          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-        </ion-thumbnail>
-        <ion-card-header>
-          <ion-skeleton-text [animated]="true" style="width: 60%; height: 1.75em"></ion-skeleton-text>
-          <ion-skeleton-text [animated]="true" style="width: 80%; height: 1.25em"></ion-skeleton-text>
-        </ion-card-header>
     
-        <ion-card-content>
-          <ion-skeleton-text [animated]="true" style="width: 30%; height: 1em"></ion-skeleton-text>
-        </ion-card-content>
-      </ion-card>
-    </div>
   </ion-content>
 
 

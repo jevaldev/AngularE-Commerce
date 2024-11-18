@@ -3,12 +3,56 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngFor="let category of categories">
-    <h1>
-      {{category.category}}
-    </h1>
-  </div>
+  <main>
+    <div class="main-grid">
+      <header class="search-title">
+        <h3>Filtrar por</h3>
+      </header>
+      <header class="products-title">
+        <h2>{{title}}</h2>
+      </header>
+      <nav class="search-filter">
+        <ul>
+          <li (click)="getProducts()">Todos los productos</li>
+          <li>
+            <details>
+              <summary>Categorias</summary>
+              <ul *ngFor="let category of categories">
+                <li (click)="getProductsByCategory(category.category)">{{category.category}}</li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+    
+        <!-- <app-product-list-card class="products-list" [products]="products"></app-product-list-card> -->
+        <article class="products-list" *ngIf="loadedProducts">
+          <div class="product-card" *ngFor="let item of products"> 
+            <picture> 
+              <img alt="Imagen del platillo" src="{{item.imgName}}" />
+            </picture>
+            <header>
+              <h4>{{item.product}}</h4>
+              <ion-button [routerLink]="['/products/product-item', item.id]"><ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+            </header>
+            <footer>
+              <h5>${{item.price}}MXN</h5>
+              <small>Marca: {{item.brand}}</small>
+              <small>Categoria: {{item.category}}</small>
+            </footer>
+          </div>
+        </article>
 
-  <h1>Todo los productos</h1>
-  <app-product-list-card [products]="products"></app-product-list-card>
+
+        <article class="products-list" *ngIf="!loadedProducts">
+          <div class="flower-spinner">
+            <div class="dots-container">
+              <div class="bigger-dot">
+                <div class="smaller-dot"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+    </div>
+  </main>
 </ion-content>

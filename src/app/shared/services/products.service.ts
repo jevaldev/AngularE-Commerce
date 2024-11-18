@@ -32,6 +32,19 @@ export class ProductsService {
     }
   }
 
+  async getProductByID(id: string): Promise<Products> {
+    try {
+      const response = await axios.get(`${this.apiURL}/products/${id}`);
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
+  }
+
   async getCategories(): Promise<any> {
     try {
       const response = await axios.get(`${this.apiURL}/categories`);
@@ -45,9 +58,11 @@ export class ProductsService {
     }
   }
 
-  async getProductByID(id: string): Promise<Products> {
+  async getProductsByCategories(category: string) {
     try {
-      const response = await axios.get(`${this.apiURL}/products/${id}`);
+      const response = await axios.get(
+        `${this.apiURL}/getProducts/${category}`
+      );
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
