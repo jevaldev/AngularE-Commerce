@@ -1,10 +1,73 @@
-h1{
+main {
+  padding-inline: 2rem;
+
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header'
+    'products-list-cart products-list-cart products-list-cart products-list-cart products-list-cart purchase-resume'
+    'footer footer footer footer footer footer'
+  ;
+  color: black;
+}
+header {
+  grid-area: header;
+}
+.products-list-cart{
+  padding-inline: 5rem;
+  padding-block: 2rem;
+  border: 1px solid #404E68;
+  grid-area: products-list-cart;
+  display: grid;
+  gap: 1rem;
+  margin-left: 4rem;
+}
+.purchase-resume {
+  background-color: #ebeef3;
+  grid-area: purchase-resume;
+  width: max-content;
+  justify-self: center;
+}
+footer {
+  grid-area: footer;
+}
+
+
+section {
+  padding: 1rem;
+  box-shadow: 0px 0px 4px #313949;
+}
+
+h2{
   color: #404E68;
-  padding-left: 4rem;
   font-weight: bold;
 }
 
-table{
-  color: black;
-  border-collapse: collapse;
+.shopping-cart {
+  background-color: white;
+  box-shadow: 0px 0px 4px #313949;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    aspect-ratio: 1/1;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  div {
+    small {
+      display: block;
+    }
+    h3{
+      margin: 0;
+      font-size: 1.5rem;
+      color: #155493
+    }
+    h4 {
+      font-size: 1.3;
+    }
+  }
 }

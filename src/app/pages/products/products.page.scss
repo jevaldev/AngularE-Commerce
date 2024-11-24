@@ -1,3 +1,11 @@
+main {
+  padding: 2rem;
+  color: #404E68;
+  section {
+    margin-block: 3rem;
+  }  
+}
+
 .container{
   padding: 0;
   margin: 0;
@@ -5,7 +13,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
 .img-wrapper {
+  padding-block: 2rem;
   width: 100%;
   height: 50svh;
   display: flex;
@@ -37,8 +47,8 @@
   }
 
   img {
+    aspect-ratio: 4/3;
     width: min(500px, 100vw);
-    height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -49,42 +59,112 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #dae5ee;
+  background-color: #e3eefb;
+  backdrop-filter: blur(5px);
 
   padding-inline: 3rem;
 
-  h2 {
+  header {
+    display: flex;
+    gap: 0.5rem;
+    align-items: end;
+  }
+
+  h3 {
     font-size: 1.75rem;
-    color: #000000;
+    color: #404E68;
     font-weight: bold;
+    font-family: cursive;
   }
 
   h4 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #000000;
-    font-weight: bold;
   }
-
+  // #baeaff
   h5 {
-    color: #7697BB;
+    color: #155493;
   }
 
   span {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     text-decoration: line-through;
     color: #a09d9d;
     margin-left: 0.5rem;
   }
 
   p {
-    font-size: 2rem;
-    color: darkgreen;
+    margin: 0;
+    font-size: 3rem;
+    color: #154777;
   }
 
   footer {
     display: flex;
-    gap: 1rem;
   }
+}
+
+.carousel {
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-behavior: smooth;
+  background-color: #cedee9;
+
+  > ion-card{
+    margin: 0;
+    // padding: 0;
+    scroll-snap-align: center;
+    flex: 0 0 max-content;
+    display: flex;
+    flex-direction: column;
+
+    > ion-card-content {
+      font-size: 1.5rem;
+      color: #154777;
+      span {
+        font-size: 1.15rem;
+        text-decoration: line-through;
+        color: #a09d9d;
+        margin-left: 0.5rem;
+      }
+    }
+
+    ion-card-header {
+      display: flex;
+      padding: 0;
+      flex-direction: row;
+      gap: 0.5rem;
+
+      ion-card-content{
+        padding: 0;
+      }
+    }
+    
+    img {
+      aspect-ratio: 1/1;
+      width: 350px;
+      height: 350px;
+      align-self: center;
+    }
+    @media (max-width: 700px) {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+
+ion-button {
+  --background: white;
+  --border-color: #2d495f;
+  --border-width: 2px;
+  --border-style: solid;
+  --background-hover: #7397be;
 }
 
 ion-thumbnail{
@@ -108,3 +188,5 @@ ion-skeleton-text {
   75% { margin-left: -300%; }
   100% { margin-left: -300%; }
 }
+
+

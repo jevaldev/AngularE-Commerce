@@ -3,18 +3,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div><h1>Mi carrito</h1></div>
-  <table>
-    <thead>
-      <th>Cantidad</th>
-      <th>Nombre del producto</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Tomate</td>
-      </tr>
-      <tr>Tomate</tr>
-    </tbody>
-  </table>
+  <main>
+    <header><h1>Mi carrito</h1></header>
+    <section class="products-list-cart">
+      <article class="shopping-cart" *ngFor="let product of products">
+        <img src="{{product.imgName}}" alt="" />
+        <div>
+          <h4>{{product.product}}</h4>
+          <h3>${{product.price}} MXN</h3>
+          <small>Cantidad a comprar {{product.amount}}</small>
+        </div>
+      </article>
+    </section>
+    <section class="purchase-resume">
+      <header><h2>Resumen de compra</h2></header>
+      <article>
+        <h5>Cantidad a pagar: ${{totalPrice}} MXN</h5>
+        <h6>Total de productos: {{totalOfProducts}}</h6>
+      </article>
+      <ion-button (click)="subscribeToNotifications()">
+        Recibir notificaciones del carrito
+      </ion-button>
+    </section>
+    <footer>
+      <h5>Hola</h5>
+    </footer>
+  </main>
 </ion-content>

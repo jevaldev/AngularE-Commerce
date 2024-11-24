@@ -20,6 +20,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     IonicModule,
     ProductsPageRoutingModule,
     SharedComponentsModule,
+    FormsModule,
   ],
   declarations: [
     ProductsPage,

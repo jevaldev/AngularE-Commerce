@@ -12,9 +12,13 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
 
-// Registra el service worker personalizado
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/custom-sw.js').then(() => {
-    console.log('Service Worker personalizado registrado');
-  });
+  navigator.serviceWorker
+    .register('/assets/custom-sw.js')
+    .then(() => {
+      console.log('Service Worker personalizado registrado');
+    })
+    .catch((error) => {
+      console.error('Error al registrar el Service Worker:', error);
+    });
 }

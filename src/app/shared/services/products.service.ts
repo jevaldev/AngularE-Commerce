@@ -5,13 +5,20 @@ export interface Products {
   id: string;
   product: string;
   brand: string;
-  quantity: Number;
-  price: Number;
+  quantity: number;
+  price: number;
   category: string;
-  stock: Number;
-  offer: Number;
+  stock: number;
+  offer: number;
   fetchName: string;
   imgName: string;
+}
+export interface CartProducts {
+  productID: string;
+  product: string;
+  imgName: string;
+  amount: number;
+  price: number;
 }
 @Injectable({
   providedIn: 'root',
@@ -87,5 +94,39 @@ export class ProductsService {
       }
     }
   }
+
+  async addProductToCart(product: object, userID: string) {
+    try {
+      const response = await axios.post(`${this.apiURL}/addProductsUser`, {
+        userID,
+        productos: [product],
+      });
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
+  }
+
+  async getProductsInCart(ID: string) {
+    try {
+      const response = await axios.get(`${this.apiURL}/user/getProducts/${ID}`);
+      return response.data;
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        throw error.response?.data || 'Error en la solicitud al servidor';
+      } else {
+        throw 'Error inesperado';
+      }
+    }
+  }
+
+  saveSubscription(subscription: PushSubscription) {
+    return axios.post(`${this.apiURL}/subscribe`, subscription);
+  }
+
   constructor() {}
 }

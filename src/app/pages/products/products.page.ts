@@ -12,6 +12,7 @@ import {
 export class ProductsPage implements OnInit {
   public loaded = false;
   public products: Products[] = [];
+  public highligtedProducts: Products[] = [];
   placeholders: number[] = Array(5).fill(0);
   public errorMessage: string = '';
 
@@ -22,7 +23,9 @@ export class ProductsPage implements OnInit {
 
     try {
       const response: Products[] = await this.productsAPI.getProducts();
-      this.products = response.slice(0, 5); // Asignar los productos recibidos
+      console.log(response.filter((r) => r.offer !== 0));
+      this.products = response.filter((item) => String(item.offer) != '0');
+      this.highligtedProducts = this.products.slice(0, 4);
     } catch (error: any) {
       console.error('Error al obtener productos:', error);
       this.errorMessage = error.message || 'Error al obtener los productos'; // Mostrar el mensaje de error si lo hay
